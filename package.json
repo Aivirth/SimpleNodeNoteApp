@@ -1,0 +1,14 @@
+{
+  "name": "nodenotesapp",
+  "version": "1.0.0",
+  "description": "Simple Project for nodejs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aivirth",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.5"
+  }
+}
