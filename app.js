@@ -1,26 +1,33 @@
 const fs = require('fs');
 const _ = require('lodash');
+const yargs = require('yargs');
 
-let command = process.argv[2];
-console.log(process.argv);
-console.log(`Command: ${command}`);
+const notes = require('./notes');
+
+//fetch yargs parsed argvs
+const argv = yargs.argv;
+
+//fetch process from yargs _ property
+const command = argv._[0];
+console.log(`Process: ${process.argv}`);
+console.log(`yargs: ` , argv);
 
 
-switch(command){
-    case 'add':
-    console.log('adding new note');
+switch(true){
+    case (command === 'add'):
+    notes.addNote(argv.title, argv.body);
     break;
 
-    case 'list':
-    console.log('listing all notes');
+    case (command === 'list'):
+    notes.getAll();
     break;
 
-    case 'remove':
-    console.log('removing note');
+    case (command === 'remove'):
+    notes.removeNote(argv.title);
     break;
 
-    case 'read':
-    console.log('reading note');
+    case (command === 'read'):
+    notes.readNote(argv.title);
     break;
 
     default:
