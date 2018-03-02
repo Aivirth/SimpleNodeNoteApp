@@ -14,12 +14,12 @@ console.log(`yargs: `, argv);
 
 switch (true) {
   case command === "add":
-    const note = notes.addNote(argv.title, argv.body);
-    if (note) {
+    const noteAdded = notes.addNote(argv.title, argv.body);
+    if (noteAdded) {
       console.log("Note Created");
-      console.log('---');
-      console.log(`Title: ${note.title}`);
-      console.log(`Body: ${note.body}`);
+      console.log("---");
+      console.log(`Title: ${noteAdded.title}`);
+      console.log(`Body: ${noteAdded.body}`);
     } else {
       console.log("Duplicate found");
     }
@@ -30,11 +30,13 @@ switch (true) {
     break;
 
   case command === "remove":
-    notes.removeNote(argv.title);
+    const noteRemoved = notes.removeNote(argv.title);
+    const message = noteRemoved ? "Note removed" : "Note not removed";
+    console.log(message);
     break;
 
   case command === "read":
-    notes.readNote(argv.title);
+    const noteSelected = notes.readNote(argv.title);
     break;
 
   default:

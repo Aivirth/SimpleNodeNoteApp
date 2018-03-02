@@ -26,7 +26,7 @@ const addNote = (title, body) => {
     notes.push(note);
     saveNotes(notes);
     return note;
-  } 
+  }
 };
 
 const getAll = () => {
@@ -34,7 +34,13 @@ const getAll = () => {
 };
 
 const removeNote = title => {
-  console.log(`Removing note: ${title}`);
+  //fetch notes
+  const notes = fetchNotes();
+  //filter notes, remove based on title
+  const filteredNotes = notes.filter(note => note.title !== title);
+  //save new notes array
+  saveNotes(filteredNotes);
+  return notes.length !== filteredNotes.length;
 };
 
 const readNote = title => {
