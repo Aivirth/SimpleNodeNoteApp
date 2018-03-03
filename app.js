@@ -17,9 +17,7 @@ switch (true) {
     const noteAdded = notes.addNote(argv.title, argv.body);
     if (noteAdded) {
       console.log("Note Created");
-      console.log("---");
-      console.log(`Title: ${noteAdded.title}`);
-      console.log(`Body: ${noteAdded.body}`);
+      notes.logNotes(noteAdded);
     } else {
       console.log("Duplicate found");
     }
@@ -37,6 +35,14 @@ switch (true) {
 
   case command === "read":
     const noteSelected = notes.readNote(argv.title);
+
+    if (noteSelected) {
+      console.log("Note Selected");
+      notes.logNotes(noteSelected);
+    } else {
+      console.log(`${argv.title} does not exist`);
+    }
+
     break;
 
   default:

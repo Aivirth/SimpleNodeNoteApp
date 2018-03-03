@@ -1,5 +1,11 @@
 const fs = require("fs");
 
+function logNotes(note) {
+  console.log("---");
+  console.log(`Title: ${note.title}`);
+  console.log(`Body: ${note.body}`);
+}
+
 const fetchNotes = () => {
   try {
     let noteString = fs.readFileSync("notes-data.json");
@@ -44,12 +50,15 @@ const removeNote = title => {
 };
 
 const readNote = title => {
-  console.log(`Reading note: ${title}`);
+  const notes = fetchNotes();
+  const selectedNote = notes.filter(note => note.title === title);
+  return selectedNote[0];
 };
 
 module.exports = {
   addNote,
   getAll,
   removeNote,
-  readNote
+  readNote,
+  logNotes
 };
