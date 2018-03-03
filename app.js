@@ -24,7 +24,12 @@ switch (true) {
     break;
 
   case command === "list":
-    notes.getAll();
+    const allNotes = notes.getAll();
+    console.log(`Printing ${notes.length} note(s).`);
+
+    for (note in allNotes) {
+      notes.logNotes(allNotes[note]);
+    }
     break;
 
   case command === "remove":
